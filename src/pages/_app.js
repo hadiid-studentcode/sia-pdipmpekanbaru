@@ -1,10 +1,8 @@
 import "../../public/assets/bootstrap/css/bootstrap.min.css";
-// import "../../public/assets/bootstrap/js/bootstrap.min.js";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
+
 
 export default function App({ Component, pageProps }) {
-
-  const {title} = pageProps;
 
  
  
