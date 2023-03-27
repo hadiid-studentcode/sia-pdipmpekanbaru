@@ -8,21 +8,12 @@ import Link from "next/link";
 import Head from 'next/head'
 import Header from "../components/Header"
 import { useRouter } from 'next/router';
-import logo from '../../public/assets/img/pdipm.png';
 import Navbarku from "../components/Navbar";
 
 
 export default function Home() {
 
-  const router = useRouter();
-
-  const navigation = [
-    { name: "Home", Link: "/", classLink:router.pathname === "/" ? "nav-link active" : "nav-link" },
-    { name: "Surat Masuk", Link: "/surat-masuk",classLink:router.pathname === "/surat-masuk" ? "nav-link active" : "nav-link" },
-    { name: "Surat Keluar", Link: "/surat-keluar" ,classLink:router.pathname === "/surat-keluar" ? "nav-link active" : "nav-link"},
-    { name: "Permohonan Surat", Link: "/permohonan-surat" ,classLink:router.pathname === "/permohonan-surat" ? "nav-link active" : "nav-link"}
-  ];
-
+ 
   return (
     <>
 
