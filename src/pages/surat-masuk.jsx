@@ -1,6 +1,5 @@
 import Head from "next/head";
-import Header from "../components/Header";import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
+import Header from "../components/Header";
 import logo from '../../public/assets/img/pdipm.png';
 import { useRouter } from 'next/router';
 import Link from 'next/link'
