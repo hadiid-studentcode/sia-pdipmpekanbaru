@@ -8,7 +8,8 @@ export default function SuratMasuk() {
         <>
             <Head>
                 <title>Surat Masuk - SIA PD IPM Pekanbaru</title>
-            </Head>    
+            </Head>
+                
         </>
     );
 }
