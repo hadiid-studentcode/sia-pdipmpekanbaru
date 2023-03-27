@@ -1,5 +1,6 @@
 import Head from "next/head";
-import Header from "../components/Header";
+import Header from "../components/Header";import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
 export default function SuratMasuk() {
   return (
@@ -7,7 +8,7 @@ export default function SuratMasuk() {
       <Head>
         <title>Surat Masuk - SIA PD IPM Pekanbaru</title>
       </Head>
-
+    <Navbar/>
       <Header />
 
       <section>
@@ -190,6 +191,8 @@ export default function SuratMasuk() {
           </div>
         </div>
       </section>
+
+      <Footer/>
     </>
   );
 }

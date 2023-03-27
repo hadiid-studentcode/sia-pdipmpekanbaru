@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Header from "../components/Header";
-
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
 export default function SuratKeluar() {
     return (
@@ -9,6 +10,7 @@ export default function SuratKeluar() {
                 <title>Surat Keluar - SIA PD IPM Pekanbaru</title>
             </Head>
 
+<Navbar/>
             <Header/>
 
             <section>
@@ -191,6 +193,7 @@ export default function SuratKeluar() {
                     </div>
                 </div>
             </section>
+            <Footer/>
         </>
     );
 }

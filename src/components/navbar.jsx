@@ -7,10 +7,13 @@ import { useRouter } from 'next/router';
 
 export default function Navbar() {
 
-
+const router = useRouter();
 
   const navigation = [
-
+    { name: "Home", Link: "/", classLink:router.pathname === "/" ? "nav-link active" : "nav-link" },
+    { name: "Surat Masuk", Link: "/surat-masuk",classLink:router.pathname === "/surat-masuk" ? "nav-link active" : "nav-link" },
+    { name: "Surat Keluar", Link: "/surat-keluar" ,classLink:router.pathname === "/surat-keluar" ? "nav-link active" : "nav-link"},
+    { name: "Permohonan Surat", Link: "/permohonan-surat" ,classLink:router.pathname === "/permohonan-surat" ? "nav-link active" : "nav-link"}
   ];
 
 

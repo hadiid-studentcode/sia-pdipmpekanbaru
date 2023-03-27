@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Header from "../components/Header";
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
 export default function PermohonanSurat() {
   return (
@@ -8,6 +10,7 @@ export default function PermohonanSurat() {
         <title>Permohonan Surat - SIA PD IPM Pekanbaru</title>
       </Head>
 
+<Navbar/>
       <Header />
 
       <section>
@@ -53,6 +56,7 @@ export default function PermohonanSurat() {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   );
 }

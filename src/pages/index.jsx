@@ -7,7 +7,8 @@ import webDevelopment from "../../public/assets/img/illustrations/web-developmen
 import Link from "next/link";
 import Head from 'next/head'
 import Header from "../components/Header"
-
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
 export default function Home() {
 
@@ -21,8 +22,8 @@ export default function Home() {
           Home - SIA PD IPM Pekanbaru
         </title>
       </Head>
-  
-    <Header/>
+      <Navbar />
+      <Header />
 
 
       <section>
@@ -208,16 +209,16 @@ export default function Home() {
         </div>
       </section>
 
-        <section className="py-5">
+      <section className="py-5">
         <div className="container py-4 py-xl-5">
           <div className="row mb-5">
             <div className="col-md-8 col-xl-6 text-center mx-auto">
               <h2 className="display-6 fw-bold mb-4">
-                Check out<br/>
+                Check out<br />
                 our
                 <span className="underline">amazing plans</span>
               </h2>
-              
+
               <p className="text-muted">
                 Curae hendrerit donec commodo hendrerit egestas tempus, turpis
                 facilisis nostra nunc. Vestibulum dui eget ultrices.
@@ -245,13 +246,13 @@ export default function Home() {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           className="icon icon-tabler icon-tabler-check fs-5 text-primary">
-                            <path
-                              stroke="none"
-                              d="M0 0h24v24H0z"
-                              fill="none">
+                          <path
+                            stroke="none"
+                            d="M0 0h24v24H0z"
+                            fill="none">
 
-                              </path>
-                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Lectus ut nibh quam, felis porttitor.</span>
+                          </path>
+                          <path d="M5 12l5 5l10 -10"></path></svg></span><span>Lectus ut nibh quam, felis porttitor.</span>
                       </li>
                       <li className="d-flex mb-2">
                         <span className="bs-icon-xs bs-icon-rounded bs-icon me-2"><svg
@@ -265,11 +266,11 @@ export default function Home() {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           className="icon icon-tabler icon-tabler-check fs-5 text-primary">
-                            <path
-                              stroke="none"
-                              d="M0 0h24v24H0z"
-                              fill="none"></path>
-                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Ante nec venenatis etiam lacinia.</span>
+                          <path
+                            stroke="none"
+                            d="M0 0h24v24H0z"
+                            fill="none"></path>
+                          <path d="M5 12l5 5l10 -10"></path></svg></span><span>Ante nec venenatis etiam lacinia.</span>
                       </li>
                       <li className="d-flex mb-2">
                         <span className="bs-icon-xs bs-icon-rounded bs-icon me-2"><svg
@@ -283,12 +284,12 @@ export default function Home() {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           className="icon icon-tabler icon-tabler-check fs-5 text-primary">
-                            <path
-                              stroke="none"
-                              d="M0 0h24v24H0z"
-                              fill="none">
-                              </path>
-                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Porta suscipit netus ad ac.</span>
+                          <path
+                            stroke="none"
+                            d="M0 0h24v24H0z"
+                            fill="none">
+                          </path>
+                          <path d="M5 12l5 5l10 -10"></path></svg></span><span>Porta suscipit netus ad ac.</span>
                       </li>
                     </ul>
                   </div>
@@ -318,11 +319,11 @@ export default function Home() {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           className="icon icon-tabler icon-tabler-check fs-5 text-primary">
-                            <path
-                              stroke="none"
-                              d="M0 0h24v24H0z"
-                              fill="none"></path>
-                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Lectus ut nibh quam, felis porttitor.</span>
+                          <path
+                            stroke="none"
+                            d="M0 0h24v24H0z"
+                            fill="none"></path>
+                          <path d="M5 12l5 5l10 -10"></path></svg></span><span>Lectus ut nibh quam, felis porttitor.</span>
                       </li>
                       <li className="d-flex mb-2">
                         <span className="bs-icon-xs bs-icon-rounded bs-icon me-2"><svg
@@ -336,25 +337,25 @@ export default function Home() {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           className="icon icon-tabler icon-tabler-check fs-5 text-primary">
-                            <path
-                              stroke="none"
-                              d="M0 0h24v24H0z"
-                              fill="none"></path>
-                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Ante nec venenatis etiam lacinia.</span>
+                          <path
+                            stroke="none"
+                            d="M0 0h24v24H0z"
+                            fill="none"></path>
+                          <path d="M5 12l5 5l10 -10"></path></svg></span><span>Ante nec venenatis etiam lacinia.</span>
                       </li>
                       <li className="d-flex mb-2">
                         <span className="bs-icon-xs bs-icon-rounded bs-icon me-2">
                           <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="1em"
-                          height="1em"
-                          viewBox="0 0 24 24"
-                          strokeWidth="2"
-                          stroke="currentColor"
-                          fill="none"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="icon icon-tabler icon-tabler-check fs-5 text-primary">
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 24 24"
+                            strokeWidth="2"
+                            stroke="currentColor"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="icon icon-tabler icon-tabler-check fs-5 text-primary">
                             <path
                               stroke="none"
                               d="M0 0h24v24H0z"
@@ -387,11 +388,11 @@ export default function Home() {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           className="icon icon-tabler icon-tabler-check fs-5 text-primary">
-                            <path
-                              stroke="none"
-                              d="M0 0h24v24H0z"
-                              fill="none"></path>
-                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Lectus ut nibh quam, felis porttitor.</span>
+                          <path
+                            stroke="none"
+                            d="M0 0h24v24H0z"
+                            fill="none"></path>
+                          <path d="M5 12l5 5l10 -10"></path></svg></span><span>Lectus ut nibh quam, felis porttitor.</span>
                       </li>
                       <li className="d-flex mb-2">
                         <span className="bs-icon-xs bs-icon-rounded bs-icon me-2"><svg
@@ -405,11 +406,11 @@ export default function Home() {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           className="icon icon-tabler icon-tabler-check fs-5 text-primary">
-                            <path
-                              stroke="none"
-                              d="M0 0h24v24H0z"
-                              fill="none"></path>
-                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Ante nec venenatis etiam lacinia.</span>
+                          <path
+                            stroke="none"
+                            d="M0 0h24v24H0z"
+                            fill="none"></path>
+                          <path d="M5 12l5 5l10 -10"></path></svg></span><span>Ante nec venenatis etiam lacinia.</span>
                       </li>
                       <li className="d-flex mb-2">
                         <span className="bs-icon-xs bs-icon-rounded bs-icon me-2"><svg
@@ -423,25 +424,25 @@ export default function Home() {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           className="icon icon-tabler icon-tabler-check fs-5 text-primary">
-                            <path
-                              stroke="none"
-                              d="M0 0h24v24H0z"
-                              fill="none"></path>
-                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Porta suscipit netus ad ac.</span>
+                          <path
+                            stroke="none"
+                            d="M0 0h24v24H0z"
+                            fill="none"></path>
+                          <path d="M5 12l5 5l10 -10"></path></svg></span><span>Porta suscipit netus ad ac.</span>
                       </li>
                       <li className="d-flex mb-2">
                         <span className="bs-icon-xs bs-icon-rounded bs-icon me-2">
                           <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="1em"
-                          height="1em"
-                          viewBox="0 0 24 24"
-                          strokeWidth="2"
-                          stroke="currentColor"
-                          fill="none"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="icon icon-tabler icon-tabler-check fs-5 text-primary">
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 24 24"
+                            strokeWidth="2"
+                            stroke="currentColor"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="icon icon-tabler icon-tabler-check fs-5 text-primary">
                             <path
                               stroke="none"
                               d="M0 0h24v24H0z"
@@ -459,7 +460,7 @@ export default function Home() {
       </section>
 
 
-       <section className="py-4 py-xl-5 mb-5">
+      <section className="py-4 py-xl-5 mb-5">
         <div className="container">
           <div className="row mb-2">
             <div className="col-md-8 col-xl-6 text-center mx-auto">
@@ -562,7 +563,7 @@ export default function Home() {
         </div>
       </section>
 
-        <section className="py-4 py-xl-5">
+      <section className="py-4 py-xl-5">
         <div className="container">
           <div
             className="text-white bg-primary border rounded border-0 border-primary d-flex flex-column justify-content-between flex-lg-row p-4 p-md-5">
@@ -586,7 +587,7 @@ export default function Home() {
       </section>
 
 
-   
+      <Footer />
 
     </>
   );
