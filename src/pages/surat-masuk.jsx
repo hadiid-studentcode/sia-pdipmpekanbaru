@@ -1,7 +1,14 @@
+import Head from 'next/head'
+
 export default function SuratMasuk() {
+
+    
+    
     return (
         <>
-     
+            <Head>
+                <title>Surat Masuk - SIA PD IPM Pekanbaru</title>
+            </Head>    
         </>
     );
 }

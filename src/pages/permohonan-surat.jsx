@@ -1,7 +1,11 @@
+import Head from 'next/head'
+
 export default function PermohonanSurat() {
     return (
         <>
-<h1>permohonan surat</h1>
+            <Head>
+                <title>PermohonanSurat - SIA PD IPM Pekanbaru</title>
+            </Head>
         </>
     );
 }
