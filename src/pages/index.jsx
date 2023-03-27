@@ -8,6 +8,7 @@ import Link from "next/link";
 import Head from 'next/head'
 import Header from "../components/Header"
 
+
 export default function Home() {
 
 
@@ -20,8 +21,8 @@ export default function Home() {
           Home - SIA PD IPM Pekanbaru
         </title>
       </Head>
-
-      <Header />
+  
+    <Header/>
 
 
       <section>
@@ -115,419 +116,477 @@ export default function Home() {
         </div>
       </section>
 
-      {/* <section>
-        <div className="container py-4 py-xl-5">
-          <button
-            type="button"
-            className="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
-            Tambah Surat Masuk
-          </button>
-
-          <div
-            className="modal fade"
-            id="exampleModal"
-            tabIndex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <form action="" className="form" id="form">
-              <div className="modal-dialog">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h1 className="modal-title fs-5" id="exampleModalLabel">
-                      Surat Masuk
-                    </h1>
-                    <button
-                      type="button"
-                      className="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div className="modal-body">
-                    <div className="mb-3">
-                      <label htmlFor="suratno" className="form-label">
-                        Surat No *
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="nosurat"
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="perihal" className="form-label">
-                        Perihal *
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="perihal"
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="suratdari" className="form-label">
-                        Surat Dari *
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="suratdari"
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <div className="row g-2">
-                        <div className="col-md">
-                          <div className="form-floating">
-                            <select className="form-select" id="sifatsurat">
-                              <option defaultValue>Pilih</option>
-                              <option value="penting">Penting</option>
-                              <option value="umum">Umum</option>
-                              <option value="Biasa">Biasa</option>
-                            </select>
-                            <label htmlFor="floatingInputGrid">
-                              Sifat Surat
-                            </label>
-                          </div>
-                        </div>
-                        <div className="col-md">
-                          <div className="form-floating">
-                            <input
-                              type="date"
-                              className="form-control"
-                              name=""
-                              id="tanggal"
-                            />
-                            <label htmlFor="floatingSelectGrid">
-                              Tanggal Surat
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-3">
-                      <div className="row g-2">
-                        <div className="col-md">
-                          <div className="form-floating">
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="penerima"
-                            />
-                            <label htmlFor="floatingInputGrid">Penerima</label>
-                          </div>
-                        </div>
-                        <div className="col-md">
-                          <div className="form-floating">
-                            <input
-                              type="text"
-                              className="form-control"
-                              name=""
-                              id="lampiran"
-                            />
-                            <label htmlFor="floatingSelectGrid">Lampiran</label>
-                          </div>
-                        </div>
-                        <div className="mb-3">
-                          <label htmlFor="suratdari" className="form-label">
-                            Keterangan
-                          </label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            id="keterangan"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-3">
-                      <div className="input-group mb-3">
-                        <a
-                          href="https://drive.google.com/drive/folders/1fEZpWwxmKC4VayZx7A3tDQUXv4EOjFj4?usp=sharing"
-                          className="btn btn-success"
-                          target="_blank"
-                        >
-                          Upload Surat Masuk
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="modal-footer">
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                    <button type="submit" className="btn btn-primary">
-                      Simpan
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div className="table-responsive mt-4">
-            <table
-              id="table_id"
-              className="display table table-striped table-hover table-borderless table-primary align-middle"
-            >
-              <thead className="table-ligh">
-                <tr>
-                  <th>No</th>
-                  <th>Perihal</th>
-                  <th>Dari</th>
-                  <th>Sifat</th>
-                  <th>Tanggal</th>
-                  <th>Penerima</th>
-                  <th>Lampiran</th>
-                  <th>Keterangan</th>
-                  <th>Timestamp</th>
-                </tr>
-              </thead>
-              <tbody className="table-group-divider"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
 
       <section>
         <div className="container py-4 py-xl-5">
-          <button
-            type="button"
-            className="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
-            Tambah Surat Keluar
-          </button>
+          <div className="row gy-4 gy-md-0">
+            <div
+              className="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
+              <div>
+                <Image
+                  src={presentation}
+                  className="rounded img-fluid fit-cover"
 
-          <div
-            className="modal fade"
-            id="exampleModal"
-            tabIndex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <form action="" className="form" id="form">
-              <div className="modal-dialog">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h1 className="modal-title fs-5" id="exampleModalLabel">
-                      Surat Keluar
-                    </h1>
-                    <button
-                      type="button"
-                      className="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div className="modal-body">
-                    <div className="mb-3">
-                      <label htmlFor="suratno" className="form-label">
-                        Surat No *
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="nosurat"
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="perihal" className="form-label">
-                        Perihal *
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="perihal"
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="dikirimke" className="form-label">
-                        Dikirim ke *
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="dikirimke"
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <div className="row g-2">
-                        <div className="col-md">
-                          <div className="form-floating">
-                            <select className="form-select" id="sifatsurat">
-                              <option defaultValue>Pilih</option>
-                              <option value="penting">Penting</option>
-                              <option value="umum">Umum</option>
-                              <option value="Biasa">Biasa</option>
-                            </select>
-                            <label htmlFor="floatingInputGrid">
-                              Sifat Surat
-                            </label>
-                          </div>
-                        </div>
-                        <div className="col-md">
-                          <div className="form-floating">
-                            <input
-                              type="date"
-                              className="form-control"
-                              name=""
-                              id="tanggal"
-                            />
-                            <label htmlFor="floatingSelectGrid">
-                              Tanggal Surat
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-3">
-                      <div className="row g-2">
-                        <div className="col-md">
-                          <div className="form-floating">
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="penerima"
-                            />
-                            <label htmlFor="floatingInputGrid">Penerima</label>
-                          </div>
-                        </div>
-                        <div className="col-md">
-                          <div className="form-floating">
-                            <input
-                              type="text"
-                              className="form-control"
-                              name=""
-                              id="lampiran"
-                            />
-                            <label htmlFor="floatingSelectGrid">Lampiran</label>
-                          </div>
-                        </div>
-                        <div className="mb-3">
-                          <label htmlFor="suratdari" className="form-label">
-                            Keterangan
-                          </label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            id="keterangan"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-3">
-                      <div className="input-group mb-3">
-                        <a
-                          href="https://drive.google.com/drive/folders/1fEZpWwxmKC4VayZx7A3tDQUXv4EOjFj4?usp=sharing"
-                          className="btn btn-success"
-                          target="_blank"
-                        >
-                          Upload Surat Keluar
-                        </a>
-                      </div>
+                  width="800"
+                  alt="presentation"
+                />
+              </div>
+            </div>
+            <div className="col">
+              <div>
+                <h3 className="fw-bold pb-md-4">
+                  Features that make your team more&nbsp;<span className="underline">productive</span>
+                </h3>
+                <p className="text-muted py-4 py-md-0">
+                  Venenatis leo imperdiet magna enim eu quisque, metus gravida
+                  pulvinar morbi.
+                </p>
+                <div className="row gy-4 row-cols-2 row-cols-md-2">
+                  <div className="col">
+                    <div>
+                      <span className="fs-2 fw-bold text-primary bg-warning">40+</span>
+                      <p className="fw-normal text-muted">Amazing plugins</p>
                     </div>
                   </div>
-                  <div className="modal-footer">
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                    <button type="submit" className="btn btn-primary">
-                      Simpan
-                    </button>
+                  <div className="col">
+                    <div>
+                      <span className="fs-2 fw-bold text-primary bg-warning">100+</span>
+                      <p className="fw-normal text-muted">Ready-to use templates</p>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div>
+                      <span className="fs-2 fw-bold text-primary bg-warning">123+</span>
+                      <p className="fw-normal text-muted">Years of experience</p>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div>
+                      <span className="fs-2 fw-bold text-primary bg-warning">123+</span>
+                      <p className="fw-normal text-muted">Years of experience</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </form>
-          </div>
-
-          <div className="table-responsive mt-4">
-            <table
-              id="table_id"
-              className="display table table-striped table-hover table-borderless table-primary align-middle"
-            >
-              <thead className="table-ligh">
-                <tr>
-                  <th>No</th>
-                  <th>Perihal</th>
-                  <th>Dikirim ke</th>
-                  <th>Sifat</th>
-                  <th>Tanggal</th>
-                  <th>Penerima</th>
-                  <th>Lampiran</th>
-                  <th>Keterangan</th>
-                  <th>Timestamp</th>
-                </tr>
-              </thead>
-              <tbody className="table-group-divider"></tbody>
-            </table>
+            </div>
           </div>
         </div>
       </section>
 
-        <section>
-        <div className="container py-4 py-xl-5">
-          <div className="card">
-            <div className="card-header">Ajukan Surat</div>
-            <div className="card-body">
-              <form action="" className="form" id="form">
-                <div className="mb-3">
-                  <label htmlFor="nosurat" className="form-label">
-                    No Surat
-                  </label>
-                  <input type="text" className="form-control" id="nosurat" />
-                  <div className="form-text" id="emailHelp">
-                    Well never share your email with anyone else.
+      <section className="py-4 py-xl-5">
+        <div className="container">
+          <div
+            className="bg-primary border rounded border-0 border-primary overflow-hidden">
+            <div className="row g-0">
+              <div className="col-md-6 d-flex flex-column justify-content-center">
+                <div className="text-white p-4 p-md-5">
+                  <h2 className="fw-bold text-white mb-3">
+                    Ut semper sed, aptent taciti conubia.
+                  </h2>
+                  <p className="mb-4">
+                    Tincidunt laoreet leo, adipiscing taciti tempor. Primis
+                    senectus sapien, risus donec ad fusce augue interdum.
+                  </p>
+                  <div className="my-3">
+                    <Link className="btn btn-warning me-2 mt-2" role="button" href="#">Button</Link>
+                    <Link className="btn btn-light mt-2" role="button" href="#">Button</Link>
                   </div>
                 </div>
-                <div className="mb-3">
-                  <label htmlFor="exampleInputPassword1" className="form-label">
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="exampleInputPassword1"
-                  />
-                </div>
-                <div className="mb-3 form-check">
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    id="exampleCheck1"
-                  />
-                  <label className="form-check-label" htmlFor="exampleCheck1">
-                    Check me out
-                  </label>
-                </div>
-                <button type="submit" className="btn btn-primary">
-                  Submit
-                </button>
-              </form>
+              </div>
+              <div
+                className="col-md-6 order-first order-md-last">
+                <Image
+                  className="fit-contain pt-5 pt-md-0"
+                  src={webDevelopment}
+                  alt="webDevelopment"
+                  width="500"
+                />
+
+              </div>
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
+
+        <section className="py-5">
+        <div className="container py-4 py-xl-5">
+          <div className="row mb-5">
+            <div className="col-md-8 col-xl-6 text-center mx-auto">
+              <h2 className="display-6 fw-bold mb-4">
+                Check out<br/>
+                our
+                <span className="underline">amazing plans</span>
+              </h2>
+              
+              <p className="text-muted">
+                Curae hendrerit donec commodo hendrerit egestas tempus, turpis
+                facilisis nostra nunc. Vestibulum dui eget ultrices.
+              </p>
+            </div>
+          </div>
+          <div className="row gy-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
+            <div className="col">
+              <div className="card border-0 h-100">
+                <div
+                  className="card-body d-flex flex-column justify-content-between p-4">
+                  <div>
+                    <h6 className="fw-bold text-muted">Standard</h6>
+                    <h4 className="display-5 fw-bold mb-4">$15</h4>
+                    <ul className="list-unstyled">
+                      <li className="d-flex mb-2">
+                        <span className="bs-icon-xs bs-icon-rounded bs-icon me-2" ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1em"
+                          height="1em"
+                          viewBox="0 0 24 24"
+                          strokeWidth="2"
+                          stroke="currentColor"
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="icon icon-tabler icon-tabler-check fs-5 text-primary">
+                            <path
+                              stroke="none"
+                              d="M0 0h24v24H0z"
+                              fill="none">
+
+                              </path>
+                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Lectus ut nibh quam, felis porttitor.</span>
+                      </li>
+                      <li className="d-flex mb-2">
+                        <span className="bs-icon-xs bs-icon-rounded bs-icon me-2"><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1em"
+                          height="1em"
+                          viewBox="0 0 24 24"
+                          strokeWidth="2"
+                          stroke="currentColor"
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="icon icon-tabler icon-tabler-check fs-5 text-primary">
+                            <path
+                              stroke="none"
+                              d="M0 0h24v24H0z"
+                              fill="none"></path>
+                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Ante nec venenatis etiam lacinia.</span>
+                      </li>
+                      <li className="d-flex mb-2">
+                        <span className="bs-icon-xs bs-icon-rounded bs-icon me-2"><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1em"
+                          height="1em"
+                          viewBox="0 0 24 24"
+                          strokeWidth="2"
+                          stroke="currentColor"
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="icon icon-tabler icon-tabler-check fs-5 text-primary">
+                            <path
+                              stroke="none"
+                              d="M0 0h24v24H0z"
+                              fill="none">
+                              </path>
+                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Porta suscipit netus ad ac.</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <Link className="btn btn-primary" role="button" href="#">Button</Link>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="card border-warning border-2 h-100">
+                <div
+                  className="card-body d-flex flex-column justify-content-between p-4">
+                  <span
+                    className="badge bg-warning position-absolute top-0 end-0 rounded-bottom-left text-uppercase text-primary">Most Popular</span>
+                  <div>
+                    <h6 className="fw-bold text-muted">Pro</h6>
+                    <h4 className="display-5 fw-bold mb-4">$38</h4>
+                    <ul className="list-unstyled">
+                      <li className="d-flex mb-2">
+                        <span className="bs-icon-xs bs-icon-rounded bs-icon me-2"><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1em"
+                          height="1em"
+                          viewBox="0 0 24 24"
+                          strokeWidth="2"
+                          stroke="currentColor"
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="icon icon-tabler icon-tabler-check fs-5 text-primary">
+                            <path
+                              stroke="none"
+                              d="M0 0h24v24H0z"
+                              fill="none"></path>
+                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Lectus ut nibh quam, felis porttitor.</span>
+                      </li>
+                      <li className="d-flex mb-2">
+                        <span className="bs-icon-xs bs-icon-rounded bs-icon me-2"><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1em"
+                          height="1em"
+                          viewBox="0 0 24 24"
+                          strokeWidth="2"
+                          stroke="currentColor"
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="icon icon-tabler icon-tabler-check fs-5 text-primary">
+                            <path
+                              stroke="none"
+                              d="M0 0h24v24H0z"
+                              fill="none"></path>
+                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Ante nec venenatis etiam lacinia.</span>
+                      </li>
+                      <li className="d-flex mb-2">
+                        <span className="bs-icon-xs bs-icon-rounded bs-icon me-2">
+                          <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1em"
+                          height="1em"
+                          viewBox="0 0 24 24"
+                          strokeWidth="2"
+                          stroke="currentColor"
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="icon icon-tabler icon-tabler-check fs-5 text-primary">
+                            <path
+                              stroke="none"
+                              d="M0 0h24v24H0z"
+                              fill="none"></path>
+                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Porta suscipit netus ad ac.</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <Link className="btn btn-warning" role="button" href="#">Button</Link>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="card border-0 h-100">
+                <div
+                  className="card-body d-flex flex-column justify-content-between p-4">
+                  <div className="pb-4">
+                    <h6 className="fw-bold text-muted">Enterprise</h6>
+                    <h4 className="display-5 fw-bold mb-4">$70</h4>
+                    <ul className="list-unstyled">
+                      <li className="d-flex mb-2">
+                        <span className="bs-icon-xs bs-icon-rounded bs-icon me-2"><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1em"
+                          height="1em"
+                          viewBox="0 0 24 24"
+                          strokeWidth="2"
+                          stroke="currentColor"
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="icon icon-tabler icon-tabler-check fs-5 text-primary">
+                            <path
+                              stroke="none"
+                              d="M0 0h24v24H0z"
+                              fill="none"></path>
+                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Lectus ut nibh quam, felis porttitor.</span>
+                      </li>
+                      <li className="d-flex mb-2">
+                        <span className="bs-icon-xs bs-icon-rounded bs-icon me-2"><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1em"
+                          height="1em"
+                          viewBox="0 0 24 24"
+                          strokeWidth="2"
+                          stroke="currentColor"
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="icon icon-tabler icon-tabler-check fs-5 text-primary">
+                            <path
+                              stroke="none"
+                              d="M0 0h24v24H0z"
+                              fill="none"></path>
+                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Ante nec venenatis etiam lacinia.</span>
+                      </li>
+                      <li className="d-flex mb-2">
+                        <span className="bs-icon-xs bs-icon-rounded bs-icon me-2"><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1em"
+                          height="1em"
+                          viewBox="0 0 24 24"
+                          strokeWidth="2"
+                          stroke="currentColor"
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="icon icon-tabler icon-tabler-check fs-5 text-primary">
+                            <path
+                              stroke="none"
+                              d="M0 0h24v24H0z"
+                              fill="none"></path>
+                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Porta suscipit netus ad ac.</span>
+                      </li>
+                      <li className="d-flex mb-2">
+                        <span className="bs-icon-xs bs-icon-rounded bs-icon me-2">
+                          <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1em"
+                          height="1em"
+                          viewBox="0 0 24 24"
+                          strokeWidth="2"
+                          stroke="currentColor"
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="icon icon-tabler icon-tabler-check fs-5 text-primary">
+                            <path
+                              stroke="none"
+                              d="M0 0h24v24H0z"
+                              fill="none"></path>
+                            <path d="M5 12l5 5l10 -10"></path></svg></span><span>Morbi praesent aptent integer.</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <a className="btn btn-primary" role="button" href="#">Button</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
+       <section className="py-4 py-xl-5 mb-5">
+        <div className="container">
+          <div className="row mb-2">
+            <div className="col-md-8 col-xl-6 text-center mx-auto">
+              <h2 className="display-6 fw-bold mb-5">
+                <span className="pb-3 underline">FAQ<br /></span>
+              </h2>
+              <p className="text-muted mb-5">
+                Curae hendrerit donec commodo hendrerit egestas tempus, turpis
+                facilisis nostra nunc. Vestibulum dui eget ultrices.
+              </p>
+            </div>
+          </div>
+          <div className="row mb-2">
+            <div className="col-md-8 mx-auto">
+              <div className="accordion text-muted" role="tablist" id="accordion-1">
+                <div className="accordion-item">
+                  <h2 className="accordion-header" role="tab">
+                    <button
+                      className="accordion-button"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#accordion-1 .item-1"
+                      aria-expanded="true"
+                      aria-controls="accordion-1 .item-1">
+                      Aenean arcu euismod aliquam, volutpat consequat?
+                    </button>
+                  </h2>
+                  <div
+                    className="accordion-collapse collapse show item-1"
+                    role="tabpanel"
+                    data-bs-parent="#accordion-1">
+                    <div className="accordion-body">
+                      <p>
+                        Maecenas diam volutpat, erat quis enim cras lobortis
+                        vivamus donec tempor. Congue ultrices donec turpis
+                        vivamus. Laoreet aenean metus, mi nunc massa feugiat duis.
+                        Pharetra erat consequat purus curae quisque, etiam
+                        accumsan className.
+                      </p>
+                      <p className="mb-0">
+                        Commodo rutrum quisque curabitur habitasse, suspendisse
+                        etiam.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="accordion-item">
+                  <h2 className="accordion-header" role="tab">
+                    <button
+                      className="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#accordion-1 .item-2"
+                      aria-expanded="false"
+                      aria-controls="accordion-1 .item-2">
+                      Lorem quam erat placerat mollis, rhoncus senectus?
+                    </button>
+                  </h2>
+                  <div
+                    className="accordion-collapse collapse item-2"
+                    role="tabpanel"
+                    data-bs-parent="#accordion-1">
+                    <div className="accordion-body">
+                      <p className="mb-0">
+                        Nullam id dolor id nibh ultricies vehicula ut id elit.
+                        Cras justo odio, dapibus ac facilisis in, egestas eget
+                        quam. Donec id elit non mi porta gravida at eget metus.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="accordion-item">
+                  <h2 className="accordion-header" role="tab">
+                    <button
+                      className="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#accordion-1 .item-3"
+                      aria-expanded="false"
+                      aria-controls="accordion-1 .item-3">
+                      Iaculis accumsan id, facilisis proin ipsum velit neque?
+                    </button>
+                  </h2>
+                  <div
+                    className="accordion-collapse collapse item-3"
+                    role="tabpanel"
+                    data-bs-parent="#accordion-1">
+                    <div className="accordion-body">
+                      <p className="mb-0">
+                        Nullam id dolor id nibh ultricies vehicula ut id elit.
+                        Cras justo odio, dapibus ac facilisis in, egestas eget
+                        quam. Donec id elit non mi porta gravida at eget metus.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <section className="py-4 py-xl-5">
+        <div className="container">
+          <div
+            className="text-white bg-primary border rounded border-0 border-primary d-flex flex-column justify-content-between flex-lg-row p-4 p-md-5">
+            <div className="pb-2 pb-lg-1">
+              <h2 className="fw-bold text-warning mb-2">
+                Not sure which plan suits you?
+              </h2>
+              <p className="mb-0">
+                Imperdiet consectetur dolor, tristique himenaeos ultrices
+                tristique neque.
+              </p>
+            </div>
+            <div className="my-2">
+              <Link
+                className="btn btn-light fs-5 py-2 px-4"
+                role="button"
+                href="contacts.html">Contact us</Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
-
-
-
-
+   
 
     </>
   );
