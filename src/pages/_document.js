@@ -8,11 +8,8 @@ export default function Document() {
 
   return (
     <Html lang="en">
-      <Head>
-        <link rel="icon" href="pdipm.png" />
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      <Head/>
+     
       <body>
         <Main />
         <NextScript />
