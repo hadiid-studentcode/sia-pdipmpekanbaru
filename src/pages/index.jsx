@@ -115,7 +115,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
+      {/* <section>
         <div className="container py-4 py-xl-5">
           <button
             type="button"
@@ -519,7 +519,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
 
       
