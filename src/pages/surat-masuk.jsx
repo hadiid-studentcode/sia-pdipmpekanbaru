@@ -1,20 +1,28 @@
 import Head from "next/head";
 import Header from "../components/Header";
-import logo from '../../public/assets/img/pdipm.png';
-import Link from 'next/link'
-import Image from 'next/image';
-
-
 
 export default function SuratMasuk() {
-
+  const data = [
+    {
+      id: 1,
+      No: "pr/100/2023",
+      Perihal: "undangan",
+      Dari: "IPM Jakarta",
+      Sifat: "umum",
+      Tanggal: "30 maret 2023",
+      Penerima: "hadiid",
+      Lampiran: "tidak ada",
+      Keterangan: "tidak ada",
+      Timestamp: "40 maret 2023",
+    },
+  ];
 
   return (
     <>
       <Head>
         <title>Surat Masuk - SIA PD IPM Pekanbaru</title>
       </Head>
-  
+
       <Header />
 
       <section>
@@ -192,13 +200,25 @@ export default function SuratMasuk() {
                   <th>Timestamp</th>
                 </tr>
               </thead>
-              <tbody className="table-group-divider"></tbody>
+              <tbody className="table-group-divider">
+                {data.map((d) => (
+                  <tr key={d.id}>
+                    <td>{d.id}</td>
+                    <td>{d.No}</td>
+                    <td>{d.Perihal}</td>
+                    <td>{d.Sifat}</td>
+                    <td>{d.Tanggal}</td>
+                    <td>{d.Penerima}</td>
+                    <td>{d.Lampiran}</td>
+                    <td>{d.Keterangan}</td>
+                    <td>{d.Timestamp}</td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
           </div>
         </div>
       </section>
-
-      
     </>
   );
 }
