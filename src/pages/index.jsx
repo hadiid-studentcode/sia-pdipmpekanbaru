@@ -10,6 +10,15 @@ import Header from "../components/Header"
 
 
 export default function Home() {
+  const jumlahSuratmasuk = [].length;
+  const dataSuratkeluar=[].length;
+  const dataPermohonanSurat=[].length;
+
+
+
+
+
+
 
  
   return (
@@ -36,7 +45,7 @@ export default function Home() {
                     className="bs-icon-lg bs-icon-rounded bs-icon-secondary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-4 bs-icon">
                     <Image src={markEmail} alt="surat masuk" />
                   </div>
-                  <h1 id="jumlahsuratmasuk">100</h1>
+                  <h1 id="jumlahsuratmasuk">0{jumlahSuratmasuk}</h1>
                   <div>
                     <h4 className="fw-bold">Laporan Surat Masuk</h4>
 
@@ -64,7 +73,7 @@ export default function Home() {
                     className="bs-icon-lg bs-icon-rounded bs-icon-secondary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-4 bs-icon">
                     <Image src={forwardToInbox} alt="surat keluar" />
                   </div>
-                  <h1>200</h1>
+                  <h1>0{dataSuratkeluar}</h1>
                   <div>
                     <h4 className="fw-bold">Laporan Surat Keluar</h4>
 
@@ -92,7 +101,7 @@ export default function Home() {
                     className="bs-icon-lg bs-icon-rounded bs-icon-secondary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-4 bs-icon">
                     <Image src={contactEmail} alt="permohonan surat" />
                   </div>
-                  <h1>100</h1>
+                  <h1>0{dataPermohonanSurat}</h1>
                   <div>
                     <h4 className="fw-bold">Laporan Permohonan Surat</h4>
 

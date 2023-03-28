@@ -1,24 +1,26 @@
+import { supabase } from './../../lib/supabaseClient';
 import Head from 'next/head'
 import Header from "../components/Header";
 
-import Image from 'next/image';
-import logo from '../../public/assets/img/pdipm.png';
-import Link from "next/link";
+
+export default function SuratKeluar({ suratMasuk }) {
 
 
-export default function SuratKeluar() {
 
-   
+    const data = suratMasuk;
+
+
     return (
         <>
             <Head>
                 <title>Surat Keluar - SIA PD IPM Pekanbaru</title>
             </Head>
 
-          
-            <Header/>
+
+            <Header />
 
             <section>
+              
                 <div className="container py-4 py-xl-5">
                     <button
                         type="button"
@@ -193,21 +195,42 @@ export default function SuratKeluar() {
                                     <th>Timestamp</th>
                                 </tr>
                             </thead>
-                            <tbody className="table-group-divider"></tbody>
+                            <tbody className="table-group-divider">
+                                {data.map((d) => (
+                                    <tr key={d.id}>
+                                        <td>{d.id}</td>
+                                        <td>{d.no}</td>
+                                        <td>{d.dikirimke}</td>
+                                        <td>{d.sifat}</td>
+                                        <td>{d.tanggal}</td>
+                                        <td>{d.penerima}</td>
+                                        <td>{d.lampiran}</td>
+                                        <td>{d.keterangan}</td>
+                                        <td>{d.created_at}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
                         </table>
                     </div>
                 </div>
             </section>
-          
+
         </>
     );
 }
 
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
+
+
+    let { data: tb_suratKeluar, error } = await supabase
+        .from('tb_suratKeluar')
+        .select('*')
+
+
     return {
         props: {
-            title: "Surat Keluar"
-        }, // will be passed to the page component as props
-    };
+            suratMasuk: tb_suratKeluar
+        },
+    }
 }
