@@ -1,6 +1,8 @@
 import { supabase } from './../../lib/supabaseClient';
 import Head from "next/head";
 import Header from "../components/Header";
+
+
 export default function SuratMasuk({ suratMasuk }) {
 
 
@@ -267,13 +269,15 @@ export default function SuratMasuk({ suratMasuk }) {
   );
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps() {
 
 
 
   let { data: tb_suratMasuk, error } = await supabase
     .from('tb_suratMasuk')
     .select('*')
+
+
 
 
   return {
