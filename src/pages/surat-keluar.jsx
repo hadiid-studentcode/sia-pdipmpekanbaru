@@ -3,12 +3,8 @@ import Head from 'next/head'
 import Header from "../components/Header";
 
 
-export default function SuratKeluar({ suratMasuk }) {
-
-
-
-    const data = suratMasuk;
-
+export default function SuratKeluar({ suratKeluar }) {
+  
 
     return (
         <>
@@ -20,7 +16,7 @@ export default function SuratKeluar({ suratMasuk }) {
             <Header />
 
             <section>
-              
+
                 <div className="container py-4 py-xl-5">
                     <button
                         type="button"
@@ -196,7 +192,7 @@ export default function SuratKeluar({ suratMasuk }) {
                                 </tr>
                             </thead>
                             <tbody className="table-group-divider">
-                                {data.map((d) => (
+                                {suratKeluar.map((d) => (
                                     <tr key={d.id}>
                                         <td>{d.id}</td>
                                         <td>{d.no}</td>
@@ -230,7 +226,7 @@ export async function getServerSideProps() {
 
     return {
         props: {
-            suratMasuk: tb_suratKeluar
+            suratKeluar: tb_suratKeluar
         },
     }
 }

@@ -1,21 +1,48 @@
+import { supabase } from './../../lib/supabaseClient';
 import Head from "next/head";
 import Header from "../components/Header";
+export default function SuratMasuk({ suratMasuk }) {
 
-export default function SuratMasuk() {
-  const data = [
-    {
-      id: 1,
-      No: "pr/100/2023",
-      Perihal: "undangan",
-      Dari: "IPM Jakarta",
-      Sifat: "umum",
-      Tanggal: "30 maret 2023",
-      Penerima: "hadiid",
-      Lampiran: "tidak ada",
-      Keterangan: "tidak ada",
-      Timestamp: "40 maret 2023",
-    },
-  ];
+
+
+  const handleSubmit = async (event) => {
+
+    event.preventDefault();
+
+
+    const { data, error } = await supabase
+      .from('tb_suratMasuk')
+      .insert([
+        {
+          no: event.target.noSurat.value,
+          perihal: event.target.perihal.value,
+          suratDari: event.target.suratDari.value,
+          sifat: event.target.sifatSurat.value,
+          tanggal: event.target.tanggalSurat.value,
+          penerima: event.target.penerimaSurat.value,
+          lampiran: event.target.lampiraSurat.value,
+          keterangan: event.target.keteranganSurat.value,
+        }
+      ])
+
+    if (error) {
+      alert(error)
+    } else {
+      alert('User created successfully!');
+    }
+
+    event.target.noSurat.value = '';
+    event.target.perihal.value = '';
+    event.target.suratDari.value = '';
+    event.target.sifatSurat.value = '';
+    event.target.tanggalSurat.value = '';
+    event.target.penerimaSurat.value = '';
+    event.target.lampiraSurat.value = '';
+    event.target.keteranganSurat.value = '';
+
+    window.location.reload(true);
+
+  }
 
   return (
     <>
@@ -27,6 +54,7 @@ export default function SuratMasuk() {
 
       <section>
         <div className="container py-4 py-xl-5">
+
           <button
             type="button"
             className="btn btn-primary"
@@ -43,7 +71,7 @@ export default function SuratMasuk() {
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-            <form action="" className="form" id="form">
+            <form onSubmit={handleSubmit} method="post">
               <div className="modal-dialog">
                 <div className="modal-content">
                   <div className="modal-header">
@@ -66,6 +94,8 @@ export default function SuratMasuk() {
                         type="text"
                         className="form-control"
                         id="nosurat"
+                        name='noSurat'
+
                       />
                     </div>
                     <div className="mb-3">
@@ -76,6 +106,7 @@ export default function SuratMasuk() {
                         type="text"
                         className="form-control"
                         id="perihal"
+                        name="perihal"
                       />
                     </div>
                     <div className="mb-3">
@@ -85,14 +116,22 @@ export default function SuratMasuk() {
                       <input
                         type="text"
                         className="form-control"
-                        id="suratdari"
+                        id="suratDari"
+                        name='suratDari'
+
                       />
                     </div>
                     <div className="mb-3">
                       <div className="row g-2">
                         <div className="col-md">
                           <div className="form-floating">
-                            <select className="form-select" id="sifatsurat">
+                            <select
+                              className="form-select"
+                              id="sifatSurat"
+                              name='sifatSurat'
+
+
+                            >
                               <option defaultValue>Pilih</option>
                               <option value="penting">Penting</option>
                               <option value="umum">Umum</option>
@@ -108,8 +147,8 @@ export default function SuratMasuk() {
                             <input
                               type="date"
                               className="form-control"
-                              name=""
-                              id="tanggal"
+                              name="tanggalSurat"
+
                             />
                             <label htmlFor="floatingSelectGrid">
                               Tanggal Surat
@@ -125,7 +164,10 @@ export default function SuratMasuk() {
                             <input
                               type="text"
                               className="form-control"
-                              id="penerima"
+                              id="penerimaSurat"
+                              name='penerimaSurat'
+
+
                             />
                             <label htmlFor="floatingInputGrid">Penerima</label>
                           </div>
@@ -133,10 +175,10 @@ export default function SuratMasuk() {
                         <div className="col-md">
                           <div className="form-floating">
                             <input
-                              type="text"
+                              type="number"
                               className="form-control"
-                              name=""
-                              id="lampiran"
+                              name="lampiraSurat"
+
                             />
                             <label htmlFor="floatingSelectGrid">Lampiran</label>
                           </div>
@@ -148,7 +190,9 @@ export default function SuratMasuk() {
                           <input
                             type="text"
                             className="form-control"
-                            id="keterangan"
+                            id="keteranganSurat"
+                            name='keteranganSurat'
+
                           />
                         </div>
                       </div>
@@ -201,17 +245,17 @@ export default function SuratMasuk() {
                 </tr>
               </thead>
               <tbody className="table-group-divider">
-                {data.map((d) => (
+                {suratMasuk.map((d) => (
                   <tr key={d.id}>
-                    <td>{d.id}</td>
-                    <td>{d.No}</td>
-                    <td>{d.Perihal}</td>
-                    <td>{d.Sifat}</td>
-                    <td>{d.Tanggal}</td>
-                    <td>{d.Penerima}</td>
-                    <td>{d.Lampiran}</td>
-                    <td>{d.Keterangan}</td>
-                    <td>{d.Timestamp}</td>
+                    <td>{d.no}</td>
+                    <td>{d.perihal}</td>
+                    <td>{d.dikirimDari}</td>
+                    <td>{d.sifat}</td>
+                    <td>{d.tanggal}</td>
+                    <td>{d.penerima}</td>
+                    <td>{d.lampiran}</td>
+                    <td>{d.keterangan}</td>
+                    <td>{d.created_at}</td>
                   </tr>
                 ))}
               </tbody>
@@ -223,10 +267,22 @@ export default function SuratMasuk() {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
+
+
+
+  let { data: tb_suratMasuk, error } = await supabase
+    .from('tb_suratMasuk')
+    .select('*')
+
+
   return {
     props: {
-      title: "Surat Masuk",
+      suratMasuk: tb_suratMasuk
     }, // will be passed to the page component as props
   };
 }
+
+
+
+

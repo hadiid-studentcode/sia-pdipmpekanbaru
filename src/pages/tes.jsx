@@ -7,13 +7,16 @@ export default function Tes({ countries }) {
     <>
         <Header />
 
-        <h1>oke</h1>
-            <ul>
-                {countries.map((country) => (
-                    <li key={country.id}>{country.name}</li>
-                ))}
-            </ul>
+            <form action="/api/suratMasuk" method="post">
+                <label htmlFor="first">First Name</label>
+                <input type="text" id="first" name="first" required />
 
+                <label htmlFor="last">Last Name</label>
+                <input type="text" id="last" name="last" required />
+
+                <button type="submit">Submit</button>
+            </form>
+            )
     </>
     )
 }
