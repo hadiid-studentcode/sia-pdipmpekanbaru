@@ -4,7 +4,46 @@ import Header from "../components/Header";
 
 
 export default function SuratKeluar({ suratKeluar }) {
-  
+
+    const handleSubmit = async (event) => {
+
+        event.preventDefault();
+
+
+
+        const { data, error } = await supabase
+            .from('tb_suratKeluar')
+            .insert([
+                {
+                    no: event.target.noSurat.value,
+                    perihal: event.target.perihalSurat.value,
+                    dikirimke: event.target.dikirimke.value,
+                    sifat: event.target.sifatSurat.value,
+                    tanggal: event.target.tanggalSurat.value,
+                    penerima: event.target.penerimaSurat.value,
+                    lampiran: event.target.lampiranSurat.value,
+                    keterangan: event.target.keteranganSurat.value,
+                }
+            ])
+
+        if (error) {
+            alert(error)
+        } else {
+            alert('surat keluar berhasil ditambahkan!');
+        }
+
+        event.target.noSurat.value = '';
+        event.target.perihalSurat.value = '';
+        event.target.dikirimke.value = '';
+        event.target.sifatSurat.value = '';
+        event.target.tanggalSurat.value = '';
+        event.target.penerimaSurat.value = '';
+        event.target.lampiranSurat.value = '';
+        event.target.keteranganSurat.value = '';
+
+        window.location.reload(true);
+
+    }
 
     return (
         <>
@@ -34,7 +73,7 @@ export default function SuratKeluar({ suratKeluar }) {
                         aria-labelledby="exampleModalLabel"
                         aria-hidden="true"
                     >
-                        <form action="" className="form" id="form">
+                        <form onSubmit={handleSubmit} method="post">
                             <div className="modal-dialog">
                                 <div className="modal-content">
                                     <div className="modal-header">
@@ -57,6 +96,7 @@ export default function SuratKeluar({ suratKeluar }) {
                                                 type="text"
                                                 className="form-control"
                                                 id="nosurat"
+                                                name='noSurat'
                                             />
                                         </div>
                                         <div className="mb-3">
@@ -66,7 +106,8 @@ export default function SuratKeluar({ suratKeluar }) {
                                             <input
                                                 type="text"
                                                 className="form-control"
-                                                id="perihal"
+                                                id="perihalSurat"
+                                                name='perihalSurat'
                                             />
                                         </div>
                                         <div className="mb-3">
@@ -77,13 +118,14 @@ export default function SuratKeluar({ suratKeluar }) {
                                                 type="text"
                                                 className="form-control"
                                                 id="dikirimke"
+                                                name='dikirimke'
                                             />
                                         </div>
                                         <div className="mb-3">
                                             <div className="row g-2">
                                                 <div className="col-md">
                                                     <div className="form-floating">
-                                                        <select className="form-select" id="sifatsurat">
+                                                        <select className="form-select" id="sifatSurat" name='sifatSurat'>
                                                             <option defaultValue>Pilih</option>
                                                             <option value="penting">Penting</option>
                                                             <option value="umum">Umum</option>
@@ -99,8 +141,8 @@ export default function SuratKeluar({ suratKeluar }) {
                                                         <input
                                                             type="date"
                                                             className="form-control"
-                                                            name=""
-                                                            id="tanggal"
+                                                            name="tanggalSurat"
+                                                            id="tanggalSurat"
                                                         />
                                                         <label htmlFor="floatingSelectGrid">
                                                             Tanggal Surat
@@ -116,7 +158,8 @@ export default function SuratKeluar({ suratKeluar }) {
                                                         <input
                                                             type="text"
                                                             className="form-control"
-                                                            id="penerima"
+                                                            id="penerimaSurat"
+                                                            name='penerimaSurat'
                                                         />
                                                         <label htmlFor="floatingInputGrid">Penerima</label>
                                                     </div>
@@ -124,10 +167,10 @@ export default function SuratKeluar({ suratKeluar }) {
                                                 <div className="col-md">
                                                     <div className="form-floating">
                                                         <input
-                                                            type="text"
+                                                            type="number"
                                                             className="form-control"
-                                                            name=""
-                                                            id="lampiran"
+                                                            name="lampiranSurat"
+                                                            id="lampiranSurat"
                                                         />
                                                         <label htmlFor="floatingSelectGrid">Lampiran</label>
                                                     </div>
@@ -139,7 +182,8 @@ export default function SuratKeluar({ suratKeluar }) {
                                                     <input
                                                         type="text"
                                                         className="form-control"
-                                                        id="keterangan"
+                                                        id="keteranganSurat"
+                                                        name='keteranganSurat'
                                                     />
                                                 </div>
                                             </div>

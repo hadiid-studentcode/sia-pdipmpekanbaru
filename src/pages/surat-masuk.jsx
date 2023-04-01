@@ -22,7 +22,7 @@ export default function SuratMasuk({ suratMasuk }) {
           sifat: event.target.sifatSurat.value,
           tanggal: event.target.tanggalSurat.value,
           penerima: event.target.penerimaSurat.value,
-          lampiran: event.target.lampiraSurat.value,
+          lampiran: event.target.lampiranSurat.value,
           keterangan: event.target.keteranganSurat.value,
         }
       ])
@@ -30,7 +30,7 @@ export default function SuratMasuk({ suratMasuk }) {
     if (error) {
       alert(error)
     } else {
-      alert('User created successfully!');
+      alert('Surat masuk berhasil ditambahkan!');
     }
 
     event.target.noSurat.value = '';
@@ -39,7 +39,7 @@ export default function SuratMasuk({ suratMasuk }) {
     event.target.sifatSurat.value = '';
     event.target.tanggalSurat.value = '';
     event.target.penerimaSurat.value = '';
-    event.target.lampiraSurat.value = '';
+    event.target.lampiranSurat.value = '';
     event.target.keteranganSurat.value = '';
 
     window.location.reload(true);
@@ -179,7 +179,7 @@ export default function SuratMasuk({ suratMasuk }) {
                             <input
                               type="number"
                               className="form-control"
-                              name="lampiraSurat"
+                              name="lampiranSurat"
 
                             />
                             <label htmlFor="floatingSelectGrid">Lampiran</label>
