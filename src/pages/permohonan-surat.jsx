@@ -7,6 +7,43 @@ import logo from '../../public/assets/img/pdipm.png';
 
 export default function PermohonanSurat({ noSurat }) {
 
+
+
+
+  const data = `Sehubungan dengan akan akan diadakanya acara.... , yang insya Allah akan di laksanakan pada :
+
+Hari/Tanggal          : 
+
+Waktu                     :
+
+Tempat                   : 
+
+Sehubungan acara tersebut, kami memohon kepada Ipmawan/ti untuk mengirimkan perwakilan untuk menghadiri acara tersebut. Semoga mendapatkan tanggapan yang positif.
+
+Demikian surat ini kami sampaikan atas perhatian kami ucapkan terimakasih.
+  `
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+
+    const dataPermohonanSurat = {
+      nama: "-",
+      no_surat: event.target.nosurat.value,
+      jenis_surat: event.target.jenisSurat.value,
+      perihal_surat: event.target.perihalSurat.value,
+      dikirim_ke: event.target.dikirimKe.value,
+      isi_surat: event.target.isiSurat.value,
+      deskripsi_surat: event.target.deskripsiSurat.value
+    }
+
+    const link = `https://api.whatsapp.com/send?phone=6289620569613&text=_assalamualaikum_%20pak%20sekum%2C%20saya%20ingin%20ajukan%20surat%20sebagai%20berikut%20%3A%0A%0A*nama*%3A%20${dataPermohonanSurat.nama}%0A*no%20surat*%20%3A%20${dataPermohonanSurat.no_surat}%0A*jenis%20surat*%20%3A%20${dataPermohonanSurat.jenis_surat}%0A*perihal%20surat*%20%3A%20${dataPermohonanSurat.perihal_surat}%0A*dikirim%20ke*%20%3A%20${dataPermohonanSurat.dikirim_ke}%0A%0A%0A*isi%20Surat*%20%3A%0A%20${dataPermohonanSurat.isi_surat}%0A%0A%0A%0A%0A%0A%0A%0A%0A%0A%0A*deskripsi%20surat*%20%3A%0A${dataPermohonanSurat.deskripsi_surat}%0A%0A%0A%0ATerima%20kasih%20pak%20sekum%20dan%20mohon%20segera%20di%20follow%20up%20.%0A_wassalamualaikum%20warahmatullahi%20wabarakatuh._%0A%0A%0A%0A%0Attd%20%0A%0A*${dataPermohonanSurat.nama}*%0A%0A%0A`
+
+    window.open(link, "_blank");
+
+    console.log(dataPermohonanSurat);
+  }
+
   return (
     <>
       <Head>
@@ -21,14 +58,14 @@ export default function PermohonanSurat({ noSurat }) {
           <div className="card">
             <div className="card-header">Ajukan Surat</div>
             <div className="card-body">
-              <form action="" className="form" id="form">
+              <form onSubmit={handleSubmit} className="form" id="form">
                 <div className="mb-3">
                   <label htmlFor="nosurat" className="form-label">
                     No Surat
                   </label>
-                  <input type="text" className="form-control" id="nosurat" value={noSurat} disabled />
-                  <div className="form-text" id="emailHelp">
-                    no surat keluar yang sudah dikeluarkan terakhir*
+                  <input type="text" className="form-control" id="nosurat" name='nosurat' value={noSurat} disabled />
+                  <div className="form-text text-danger" id="emailHelp">
+                    no surat keluar yang sudah dikeluarkan terakhir dan akan berubah sesuai dengan kode klasifikasi tujuan*
                   </div>
                 </div>
                 <div className="mb-3">
@@ -65,8 +102,17 @@ export default function PermohonanSurat({ noSurat }) {
                     <label htmlFor="isiSurat" className="form-label">
                       isi surat
                     </label>
-                  
-                    <textarea className='form-control' name="isiSurat" id="isiSurat" cols="30" rows="10"></textarea>
+
+                    <textarea
+                      className='form-control'
+                      name="isiSurat"
+                      id="isiSurat"
+                      cols="30"
+                      rows="10"
+                      defaultValue={data}>
+
+
+                    </textarea>
 
                   </div>
                   <div className="mb-3 mt-3">
@@ -74,11 +120,11 @@ export default function PermohonanSurat({ noSurat }) {
                       deskripsi surat
                     </label>
 
-                    <textarea className='form-control' name="deskripsiSurat" id="deskripsiSurat" cols="10" rows="1"></textarea>
+                    <textarea className='form-control' name="deskripsiSurat" id="deskripsiSurat" cols="10" rows="1" defaultValue="surat ini berisi ......"></textarea>
 
                   </div>
                 </div>
-              
+
                 <button type="submit" className="btn btn-primary">
                   Submit
                 </button>
