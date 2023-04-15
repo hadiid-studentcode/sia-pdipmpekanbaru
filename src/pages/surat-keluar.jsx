@@ -1,4 +1,6 @@
 import { supabase } from './../../lib/supabaseClient';
+import React, { useState } from "react";
+
 import Head from 'next/head'
 import Header from "../components/Header";
 
@@ -44,6 +46,41 @@ export default function SuratKeluar({ suratKeluar }) {
         window.location.reload(true);
 
     }
+
+
+    const [searchValue, setSearchValue] = useState('');
+
+    const handleCariSuratMasuk = async (e) => {
+        const value = e.target.value;
+        setSearchValue(value);
+
+
+        try {
+            let { data: tb_suratKeluar, error } = await supabase
+                .from('tb_suratKeluar')
+                .select('*')
+                .ilike('no', `%${value}%`) // Menggunakan opsi ilike untuk pencarian yang case-insensitive dan partial matching
+                .limit(10); // Batasi jumlah hasil pencarian menjadi 10
+
+
+            if (error) {
+                // Handle error jika terdapat error dari response database
+                console.error(error);
+            } else {
+                // Lakukan pengolahan data tb_suratMasuk sesuai kebutuhan
+                setSearchValue(tb_suratKeluar); // Simpan hasil pencarian ke dalam state searchResult
+                // console.log(tb_suratMasuk)
+            }
+        } catch (error) {
+            // Handle error jika terdapat error dalam proses pencarian data
+            console.error(error);
+        }
+
+    }
+
+
+
+
 
     return (
         <>
@@ -217,10 +254,15 @@ export default function SuratKeluar({ suratKeluar }) {
                         </form>
                     </div>
 
+                    <div className="input-group mt-5">
+                        <span className="input-group-text" id="basic-addon1">Search</span>
+                        <input type="text" className="form-control " placeholder="cari" id='key' name='key' onChange={handleCariSuratMasuk} />
+                    </div>
+
                     <div className="table-responsive mt-4">
                         <table
                             id="table_id"
-                            className="display table table-striped table-hover table-borderless table-primary align-middle"
+                            className="display table table-striped table-hover table-borderless align-middle"
                         >
                             <thead className="table-ligh">
                                 <tr>
@@ -232,23 +274,54 @@ export default function SuratKeluar({ suratKeluar }) {
                                     <th>Penerima</th>
                                     <th>Lampiran</th>
                                     <th>Keterangan</th>
-                                    <th>Timestamp</th>
+                                   
                                 </tr>
                             </thead>
                             <tbody className="table-group-divider">
-                                {suratKeluar.map((d) => (
-                                    <tr key={d.id}>
-                                        <td>{d.id}</td>
-                                        <td>{d.no}</td>
-                                        <td>{d.dikirimke}</td>
-                                        <td>{d.sifat}</td>
-                                        <td>{d.tanggal}</td>
-                                        <td>{d.penerima}</td>
-                                        <td>{d.lampiran}</td>
-                                        <td>{d.keterangan}</td>
-                                        <td>{d.created_at}</td>
+
+                                {Array.isArray(searchValue) && searchValue.length > 0 ? (
+                                    // Render hasil pencarian jika data tersedia
+                                    searchValue.map((d) => (
+                                        <tr key={d.id}>
+                                            <td>{d.no}</td>
+                                            <td>{d.perihal}</td>
+                                            <td>{d.dikirimke}</td>
+                                            <td>{d.sifat}</td>
+                                            <td>{d.tanggal}</td>
+                                            <td>{d.penerima}</td>
+                                            <td>{d.lampiran}</td>
+                                            <td>{d.keterangan}</td>
+
+                                        </tr>
+                                    ))
+                                ) : suratKeluar && suratKeluar.length > 0 ? (
+                                    // Render data default suratMasuk jika data pencarian kosong
+                                    suratKeluar.map((d) => (
+                                        <tr key={d.id}>
+                                            <td>{d.no}</td>
+                                            <td>{d.perihal}</td>
+                                            <td>{d.dikirimke}</td>
+                                            <td>{d.sifat}</td>
+                                            <td>{d.tanggal}</td>
+                                            <td>{d.penerima}</td>
+                                            <td>{d.lampiran}</td>
+                                            <td>{d.keterangan}</td>
+
+                                        </tr>
+                                    ))
+                                ) : (
+                                    // Render pesan "Data tidak tersedia" jika tidak ada data atau terjadi error
+                                    <tr>
+                                        <td colSpan={9}>Data tidak tersedia ERROR!</td>
                                     </tr>
-                                ))}
+                                )}
+
+
+
+
+
+
+
                             </tbody>
                         </table>
                     </div>

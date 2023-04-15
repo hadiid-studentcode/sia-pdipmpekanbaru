@@ -11,16 +11,11 @@ import Header from "../components/Header"
 
 export default function Home() {
   const jumlahSuratmasuk = [].length;
-  const dataSuratkeluar=[].length;
-  const dataPermohonanSurat=[].length;
+  const dataSuratkeluar = [].length;
+  const dataPermohonanSurat = [].length;
 
 
 
-
-
-
-
- 
   return (
     <>
 
