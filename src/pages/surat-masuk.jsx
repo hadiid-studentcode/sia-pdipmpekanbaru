@@ -1,14 +1,14 @@
 import { supabase } from './../../lib/supabaseClient';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Header from "../components/Header";
 export default function SuratMasuk({ suratMasuk }) {
+  const [dataSuratMasuk, setDataSuratMasuk] = useState(suratMasuk);
+
+
 
   const handleSubmit = async (event) => {
-
     event.preventDefault();
-
-
     const { data, error } = await supabase
       .from('tb_suratMasuk')
       .insert([
@@ -42,40 +42,47 @@ export default function SuratMasuk({ suratMasuk }) {
     window.location.reload(true);
 
   }
-
-
-
   const [searchValue, setSearchValue] = useState('');
-
   const handleCariSuratMasuk = async (e) => {
     const value = e.target.value;
     setSearchValue(value);
-
-
     try {
       let { data: tb_suratMasuk, error } = await supabase
         .from('tb_suratMasuk')
         .select('*')
-        .ilike('no', `%${value}%`) // Menggunakan opsi ilike untuk pencarian yang case-insensitive dan partial matching
-        .limit(10); // Batasi jumlah hasil pencarian menjadi 10
+        .ilike('no', `%${value}%`) 
+        .limit(10);
 
       if (error) {
-        // Handle error jika terdapat error dari response database
+     
         console.error(error);
       } else {
-        // Lakukan pengolahan data tb_suratMasuk sesuai kebutuhan
-        setSearchValue(tb_suratMasuk); // Simpan hasil pencarian ke dalam state searchResult
-        // console.log(tb_suratMasuk)
+        
+        setDataSuratMasuk(tb_suratMasuk);
+      
       }
     } catch (error) {
-      // Handle error jika terdapat error dalam proses pencarian data
       console.error(error);
     }
 
   }
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5
+  const totalPages = 3 
 
+  const handlePageChange = async (newPage) => {
+    setCurrentPage(newPage);
 
+    const { data: tb_suratMasuk, error } = await supabase
+      .from('tb_suratMasuk')
+      .select('*')
+      .range((newPage - 1) * itemsPerPage, newPage * itemsPerPage - 1);
+    setDataSuratMasuk(tb_suratMasuk);
+
+   
+  }
+  
 
 
 
@@ -273,6 +280,7 @@ export default function SuratMasuk({ suratMasuk }) {
               <thead className="table-ligh">
                 <tr>
                   <th>No</th>
+                  <th>Kode Surat</th>
                   <th>Perihal</th>
                   <th>Dari</th>
                   <th>Sifat</th>
@@ -280,15 +288,16 @@ export default function SuratMasuk({ suratMasuk }) {
                   <th>Penerima</th>
                   <th>Lampiran</th>
                   <th>Keterangan</th>
-              
+
                 </tr>
               </thead>
               <tbody className="table-group-divider">
 
-                {Array.isArray(searchValue) && searchValue.length > 0 ? (
+                {
                   // Render hasil pencarian jika data tersedia
-                  searchValue.map((d) => (
+                  dataSuratMasuk.map((d,index) => (
                     <tr key={d.id}>
+                      <td>{index+1}</td>
                       <td>{d.no}</td>
                       <td>{d.perihal}</td>
                       <td>{d.suratDari}</td>
@@ -297,31 +306,9 @@ export default function SuratMasuk({ suratMasuk }) {
                       <td>{d.penerima}</td>
                       <td>{d.lampiran}</td>
                       <td>{d.keterangan}</td>
-                  
-                    </tr>
-                  ))
-                ) : suratMasuk && suratMasuk.length > 0 ? (
-                  // Render data default suratMasuk jika data pencarian kosong
-                  suratMasuk.map((d) => (
-                    <tr key={d.id}>
-                      <td>{d.no}</td>
-                      <td>{d.perihal}</td>
-                      <td>{d.suratDari}</td>
-                      <td>{d.sifat}</td>
-                      <td>{d.tanggal}</td>
-                      <td>{d.penerima}</td>
-                      <td>{d.lampiran}</td>
-                      <td>{d.keterangan}</td>
-                   
-                    </tr>
-                  ))
-                ) : (
-                  // Render pesan "Data tidak tersedia" jika tidak ada data atau terjadi error
-                  <tr>
-                    <td colSpan={9}>Data tidak tersedia ERROR!</td>
-                  </tr>
-                )}
 
+                    </tr>
+                ))}
 
 
 
@@ -330,6 +317,31 @@ export default function SuratMasuk({ suratMasuk }) {
 
               </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+              <ul className="pagination justify-content-end">
+                <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                  {/* Tombol "Previous" tidak dapat diklik ketika di halaman pertama */}
+                  <a className="btn page-link" onClick={() => handlePageChange(currentPage - 1)}>
+                    Previous
+                  </a>
+                </li>
+                {/* Loop untuk membuat item halaman */}
+                {Array.from({ length: totalPages }, (_, index) => (
+                  <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
+                    {/* Menggunakan index + 1 sebagai nomor halaman */}
+                    <a className="btn page-link" onClick={() => handlePageChange(index + 1)}>
+                      {index + 1}
+                    </a>
+                  </li>
+                ))}
+                <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                  {/* Tombol "Next" tidak dapat diklik ketika di halaman terakhir */}
+                  <a className="btn page-link" onClick={() => handlePageChange(currentPage + 1)}>
+                    Next
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
 
@@ -344,6 +356,8 @@ export async function getServerSideProps() {
   let { data: tb_suratMasuk, error } = await supabase
     .from('tb_suratMasuk')
     .select('*')
+    .range(0,5)
+    
 
   return {
     props: {
@@ -351,6 +365,7 @@ export async function getServerSideProps() {
     }, // will be passed to the page component as props
   };
 }
+
 
 
 

@@ -1,3 +1,4 @@
+import { supabase } from './../../lib/supabaseClient';
 import Image from 'next/image';
 import markEmail from "../../public/assets/img/icon/mark_email_unread_FILL0_wght400_GRAD0_opsz48.svg";
 import forwardToInbox from "../../public/assets/img/icon/forward_to_inbox_FILL0_wght400_GRAD0_opsz48.svg";
@@ -9,12 +10,10 @@ import Head from 'next/head'
 import Header from "../components/Header"
 
 
-export default function Home() {
-  const jumlahSuratmasuk = [].length;
-  const dataSuratkeluar = [].length;
-  const dataPermohonanSurat = [].length;
+export default function Home({ suratMasuk, suratKeluar }) {
 
-
+  const jumlahSuratMasuk = suratMasuk.length
+  const jumlahSuratKeluar = suratKeluar.length
 
   return (
     <>
@@ -40,7 +39,7 @@ export default function Home() {
                     className="bs-icon-lg bs-icon-rounded bs-icon-secondary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-4 bs-icon">
                     <Image src={markEmail} alt="surat masuk" />
                   </div>
-                  <h1 id="jumlahsuratmasuk">0{jumlahSuratmasuk}</h1>
+                  <h1 id="jumlahsuratmasuk">0{jumlahSuratMasuk}</h1>
                   <div>
                     <h4 className="fw-bold">Laporan Surat Masuk</h4>
 
@@ -68,7 +67,7 @@ export default function Home() {
                     className="bs-icon-lg bs-icon-rounded bs-icon-secondary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-4 bs-icon">
                     <Image src={forwardToInbox} alt="surat keluar" />
                   </div>
-                  <h1>0{dataSuratkeluar}</h1>
+                  <h1>0{jumlahSuratKeluar}</h1>
                   <div>
                     <h4 className="fw-bold">Laporan Surat Keluar</h4>
 
@@ -96,7 +95,7 @@ export default function Home() {
                     className="bs-icon-lg bs-icon-rounded bs-icon-secondary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-4 bs-icon">
                     <Image src={contactEmail} alt="permohonan surat" />
                   </div>
-                  <h1>0{dataPermohonanSurat}</h1>
+                  <h1>0</h1>
                   <div>
                     <h4 className="fw-bold">Laporan Permohonan Surat</h4>
 
@@ -592,4 +591,27 @@ export default function Home() {
 
     </>
   );
+}
+
+
+
+
+export async function getServerSideProps() {
+
+  let { data: tb_suratMasuk, error: errorSuratMasuk } = await supabase
+    .from('tb_suratMasuk')
+    .select('id', { count: 'exact' });
+
+  let { data: tb_suratKeluar, error: errorSuratKeluar } = await supabase
+    .from('tb_suratKeluar')
+    .select('id', { count: 'exact' });
+
+
+
+  return {
+    props: {
+      suratMasuk: tb_suratMasuk,
+      suratKeluar: tb_suratKeluar
+    }, // will be passed to the page component as props
+  };
 }

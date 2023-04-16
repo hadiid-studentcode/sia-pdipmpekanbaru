@@ -6,6 +6,8 @@ import Header from "../components/Header";
 
 
 export default function SuratKeluar({ suratKeluar }) {
+    const [dataSuratKeluar, setDataSuratKeluar] = useState(suratKeluar);
+
 
     const handleSubmit = async (event) => {
 
@@ -67,14 +69,29 @@ export default function SuratKeluar({ suratKeluar }) {
                 // Handle error jika terdapat error dari response database
                 console.error(error);
             } else {
-                // Lakukan pengolahan data tb_suratMasuk sesuai kebutuhan
-                setSearchValue(tb_suratKeluar); // Simpan hasil pencarian ke dalam state searchResult
-                // console.log(tb_suratMasuk)
+
+                setDataSuratKeluar(tb_suratKeluar)
             }
         } catch (error) {
             // Handle error jika terdapat error dalam proses pencarian data
             console.error(error);
         }
+
+    }
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5
+    const totalPages = 3
+
+    const handlePageChange = async (newPage) => {
+        setCurrentPage(newPage);
+
+        const { data: tb_suratKeluar, error } = await supabase
+            .from('tb_suratKeluar')
+            .select('*')
+            .range((newPage - 1) * itemsPerPage, newPage * itemsPerPage - 1);
+        setDataSuratKeluar(tb_suratKeluar);
+
 
     }
 
@@ -266,7 +283,8 @@ export default function SuratKeluar({ suratKeluar }) {
                         >
                             <thead className="table-ligh">
                                 <tr>
-                                    <th>No</th>
+                                    <td>No</td>
+                                    <th>Kode Surat</th>
                                     <th>Perihal</th>
                                     <th>Dikirim ke</th>
                                     <th>Sifat</th>
@@ -274,15 +292,16 @@ export default function SuratKeluar({ suratKeluar }) {
                                     <th>Penerima</th>
                                     <th>Lampiran</th>
                                     <th>Keterangan</th>
-                                   
+
                                 </tr>
                             </thead>
                             <tbody className="table-group-divider">
 
-                                {Array.isArray(searchValue) && searchValue.length > 0 ? (
-                                    // Render hasil pencarian jika data tersedia
-                                    searchValue.map((d) => (
+
+                                {
+                                    dataSuratKeluar.map((d,index) => (
                                         <tr key={d.id}>
+                                            <td>{index+1}</td>
                                             <td>{d.no}</td>
                                             <td>{d.perihal}</td>
                                             <td>{d.dikirimke}</td>
@@ -293,29 +312,7 @@ export default function SuratKeluar({ suratKeluar }) {
                                             <td>{d.keterangan}</td>
 
                                         </tr>
-                                    ))
-                                ) : suratKeluar && suratKeluar.length > 0 ? (
-                                    // Render data default suratMasuk jika data pencarian kosong
-                                    suratKeluar.map((d) => (
-                                        <tr key={d.id}>
-                                            <td>{d.no}</td>
-                                            <td>{d.perihal}</td>
-                                            <td>{d.dikirimke}</td>
-                                            <td>{d.sifat}</td>
-                                            <td>{d.tanggal}</td>
-                                            <td>{d.penerima}</td>
-                                            <td>{d.lampiran}</td>
-                                            <td>{d.keterangan}</td>
-
-                                        </tr>
-                                    ))
-                                ) : (
-                                    // Render pesan "Data tidak tersedia" jika tidak ada data atau terjadi error
-                                    <tr>
-                                        <td colSpan={9}>Data tidak tersedia ERROR!</td>
-                                    </tr>
-                                )}
-
+                                    ))}
 
 
 
@@ -324,6 +321,31 @@ export default function SuratKeluar({ suratKeluar }) {
 
                             </tbody>
                         </table>
+                        <nav aria-label="Page navigation example">
+                            <ul className="pagination justify-content-end">
+                                <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                                    {/* Tombol "Previous" tidak dapat diklik ketika di halaman pertama */}
+                                    <a className="btn page-link" onClick={() => handlePageChange(currentPage - 1)}>
+                                        Previous
+                                    </a>
+                                </li>
+                                {/* Loop untuk membuat item halaman */}
+                                {Array.from({ length: totalPages }, (_, index) => (
+                                    <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
+                                        {/* Menggunakan index + 1 sebagai nomor halaman */}
+                                        <a className="btn page-link" onClick={() => handlePageChange(index + 1)}>
+                                            {index + 1}
+                                        </a>
+                                    </li>
+                                ))}
+                                <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                                    {/* Tombol "Next" tidak dapat diklik ketika di halaman terakhir */}
+                                    <a className="btn page-link" onClick={() => handlePageChange(currentPage + 1)}>
+                                        Next
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </section>
@@ -339,6 +361,7 @@ export async function getServerSideProps() {
     let { data: tb_suratKeluar, error } = await supabase
         .from('tb_suratKeluar')
         .select('*')
+        .range(0, 5)
 
 
     return {
