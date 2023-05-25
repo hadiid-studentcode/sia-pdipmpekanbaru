@@ -11,8 +11,8 @@ export default function Header(){
              <div className="text-center">
                <h1 className="display-4 fw-bold mb-5">
                  Sistem Informasi Administrasi&nbsp;
-                 <span className="underline">SIA-</span>
-                 PDIPM Pekanbaru.
+                 <span className="underline">SIA </span>
+                 PD IPM Pekanbaru.
                </h1>
                <p className="fs-5 text-muted mb-5">
                  Administrasi Umum PD IPM Pekanbaru 2022 - 2024

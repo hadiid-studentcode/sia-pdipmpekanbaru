@@ -2,9 +2,6 @@ import { supabase } from './../../lib/supabaseClient';
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Header from "../components/Header";
-
-import Bprint from "../components/Bprint"
-
 export default function SuratMasuk({ suratMasuk }) {
   const [dataSuratMasuk, setDataSuratMasuk] = useState(suratMasuk);
 
@@ -53,16 +50,16 @@ export default function SuratMasuk({ suratMasuk }) {
       let { data: tb_suratMasuk, error } = await supabase
         .from('tb_suratMasuk')
         .select('*')
-        .ilike('no', `%${value}%`)
+        .ilike('no', `%${value}%`) 
         .limit(10);
 
       if (error) {
-
+     
         console.error(error);
       } else {
-
+        
         setDataSuratMasuk(tb_suratMasuk);
-
+      
       }
     } catch (error) {
       console.error(error);
@@ -72,7 +69,7 @@ export default function SuratMasuk({ suratMasuk }) {
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5
-  const totalPages = 3
+  const totalPages = 3 
 
   const handlePageChange = async (newPage) => {
     setCurrentPage(newPage);
@@ -83,9 +80,9 @@ export default function SuratMasuk({ suratMasuk }) {
       .range((newPage - 1) * itemsPerPage, newPage * itemsPerPage - 1);
     setDataSuratMasuk(tb_suratMasuk);
 
-
+   
   }
-
+  
 
 
 
@@ -275,9 +272,6 @@ export default function SuratMasuk({ suratMasuk }) {
             <span className="input-group-text" id="basic-addon1">Search</span>
             <input type="text" className="form-control " placeholder="cari" id='key' name='key' onChange={handleCariSuratMasuk} />
           </div>
-
-          <Bprint />
-
           <div className="table-responsive mt-4">
             <table
               id="table_id"
@@ -301,9 +295,9 @@ export default function SuratMasuk({ suratMasuk }) {
 
                 {
                   // Render hasil pencarian jika data tersedia
-                  dataSuratMasuk.map((d, index) => (
+                  dataSuratMasuk.map((d,index) => (
                     <tr key={d.id}>
-                      <td>{index + 1}</td>
+                      <td>{index+1}</td>
                       <td>{d.no}</td>
                       <td>{d.perihal}</td>
                       <td>{d.suratDari}</td>
@@ -314,7 +308,7 @@ export default function SuratMasuk({ suratMasuk }) {
                       <td>{d.keterangan}</td>
 
                     </tr>
-                  ))}
+                ))}
 
 
 
@@ -362,8 +356,8 @@ export async function getServerSideProps() {
   let { data: tb_suratMasuk, error } = await supabase
     .from('tb_suratMasuk')
     .select('*')
-    .range(0, 5)
-
+    .range(0,5)
+    
 
   return {
     props: {

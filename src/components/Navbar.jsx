@@ -32,7 +32,7 @@ const router = useRouter();
               alt="logo pd ipm"
               width="50"
             />
-            SIA-PDIPM</span></Link><button
+            SIA PD IPM</span></Link><button
               data-bs-toggle="collapse"
               className="navbar-toggler"
               data-bs-target="#navcol-1">
@@ -48,11 +48,8 @@ const router = useRouter();
               ))}
               
             </ul>
-
-           
-
-         
-    
+            <Link className="btn btn-primary shadow" role="button" href="signup.html"
+            >Sign up</Link>
           </div>
         </div>
       </nav>

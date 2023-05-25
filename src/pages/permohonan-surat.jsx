@@ -4,7 +4,6 @@ import Header from "../components/Header";
 import Link from "next/link";
 import Image from 'next/image';
 import logo from '../../public/assets/img/pdipm.png';
-import Bprint from '@/components/Bprint';
 
 export default function PermohonanSurat({ noSurat }) {
 
@@ -129,7 +128,6 @@ Demikian surat ini kami sampaikan atas perhatian kami ucapkan terimakasih.
                 <button type="submit" className="btn btn-primary">
                   Submit
                 </button>
-                <Bprint/>
               </form>
             </div>
           </div>
