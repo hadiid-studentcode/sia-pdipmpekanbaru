@@ -3,9 +3,12 @@ import React, { useState } from "react";
 
 import Head from 'next/head'
 import Header from "../components/Header";
+import Bprint from '@/components/Bprint';
 
 
 export default function SuratKeluar({ suratKeluar }) {
+
+
     const [dataSuratKeluar, setDataSuratKeluar] = useState(suratKeluar);
 
 
@@ -275,6 +278,10 @@ export default function SuratKeluar({ suratKeluar }) {
                         <span className="input-group-text" id="basic-addon1">Search</span>
                         <input type="text" className="form-control " placeholder="cari" id='key' name='key' onChange={handleCariSuratMasuk} />
                     </div>
+
+                    <Bprint/>
+
+                    
 
                     <div className="table-responsive mt-4">
                         <table

@@ -21,7 +21,7 @@ export default function Home({ suratMasuk, suratKeluar }) {
       <Head>
 
         <title>
-          Home - SIA PD IPM Pekanbaru
+          Home - SIA-PDIPM Pekanbaru
         </title>
       </Head>
 
