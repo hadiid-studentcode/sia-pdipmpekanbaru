@@ -309,7 +309,7 @@ export default function SuratKeluar({ suratKeluar, dataSurat }) {
 
                 {SuratKeluar.map((d, index) => (
                   <tr key={d.id}>
-                    <td>{d.no}</td>
+                    <td>{index + 1}</td>
                     <td>{d.kode}</td>
                     <td>{d.perihal}</td>
                     <td>{d.dikirimke}</td>
