@@ -6,9 +6,10 @@ import Header from "../components/Header";
 
 
 
-export default function SuratKeluar({ suratKeluar, dataSurat }) {
+export default function SuratKeluar({ tbsuratKeluar, dataSurat }) {
 //   const [dataSuratKeluar, setDataSuratKeluar] = useState(suratKeluar);
     const [SuratKeluar, setSuratKeluar] = useState(dataSurat);
+
 
 
   
@@ -308,7 +309,7 @@ export default function SuratKeluar({ suratKeluar, dataSurat }) {
                 ))} */}
 
                 {SuratKeluar.map((d, index) => (
-                  <tr key={d.id}>
+                  <tr key={d.no}>
                     <td>{index + 1}</td>
                     <td>{d.kode}</td>
                     <td>{d.perihal}</td>
@@ -367,7 +368,7 @@ export async function getServerSideProps() {
 
     return {
       props: {
-        suratKeluar: tb_suratKeluar,
+        tbsuratKeluar: tb_suratKeluar,
         dataSurat: data,
       },
     };
