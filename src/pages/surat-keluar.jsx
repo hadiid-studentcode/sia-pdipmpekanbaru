@@ -1,4 +1,5 @@
 import { supabase } from './../../lib/supabaseClient';
+import url from './api/spreadsheet-suratKeluar';
 import React, { useState } from "react";
 
 import Head from 'next/head'
@@ -341,9 +342,7 @@ export async function getServerSideProps() {
         .range(0, 5)
 
 
-         const spreadsheetId = "1AEhGqYPH5HXY9Eb4upTWHU3s0OyyFcGxc3mqs1t6GAs";
-         const apiKey = "AIzaSyDb2Fl7lCdWAjzOQ0XOwuDTKE02Kgpy66Y";
-         const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/?key=${apiKey}&includeGridData=true`;
+        
          const result = await fetch(url);
          const { sheets } = await result.json();
          const eventSheet = sheets[0];

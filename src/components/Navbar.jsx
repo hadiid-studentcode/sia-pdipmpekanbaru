@@ -48,8 +48,8 @@ const router = useRouter();
               ))}
               
             </ul>
-            <Link className="btn btn-primary shadow" role="button" href="signup.html"
-            >Sign up</Link>
+            {/* <Link className="btn btn-primary shadow" role="button" href="signup.html"
+            >Sign up</Link> */}
           </div>
         </div>
       </nav>

@@ -1,90 +1,78 @@
 import { supabase } from './../../lib/supabaseClient';
+import url from './api/spreadsheet-suratMasuk';
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Header from "../components/Header";
-export default function SuratMasuk({ suratMasuk }) {
-  const [dataSuratMasuk, setDataSuratMasuk] = useState(suratMasuk);
-
-
+export default function SuratMasuk({ suratMasuk, dataSurat }) {
+  // const [dataSuratMasuk, setDataSuratMasuk] = useState(suratMasuk);
+  const [SuratMasuk, setSuratMasuk] = useState(dataSurat);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { data, error } = await supabase
-      .from('tb_suratMasuk')
-      .insert([
-        {
-          no: event.target.noSurat.value,
-          perihal: event.target.perihal.value,
-          suratDari: event.target.suratDari.value,
-          sifat: event.target.sifatSurat.value,
-          tanggal: event.target.tanggalSurat.value,
-          penerima: event.target.penerimaSurat.value,
-          lampiran: event.target.lampiranSurat.value,
-          keterangan: event.target.keteranganSurat.value,
-        }
-      ])
+    const { data, error } = await supabase.from("tb_suratMasuk").insert([
+      {
+        no: event.target.noSurat.value,
+        perihal: event.target.perihal.value,
+        suratDari: event.target.suratDari.value,
+        sifat: event.target.sifatSurat.value,
+        tanggal: event.target.tanggalSurat.value,
+        penerima: event.target.penerimaSurat.value,
+        lampiran: event.target.lampiranSurat.value,
+        keterangan: event.target.keteranganSurat.value,
+      },
+    ]);
 
     if (error) {
-      alert(error)
+      alert(error);
     } else {
-      alert('Surat masuk berhasil ditambahkan!');
+      alert("Surat masuk berhasil ditambahkan!");
     }
 
-    event.target.noSurat.value = '';
-    event.target.perihal.value = '';
-    event.target.suratDari.value = '';
-    event.target.sifatSurat.value = '';
-    event.target.tanggalSurat.value = '';
-    event.target.penerimaSurat.value = '';
-    event.target.lampiranSurat.value = '';
-    event.target.keteranganSurat.value = '';
+    event.target.noSurat.value = "";
+    event.target.perihal.value = "";
+    event.target.suratDari.value = "";
+    event.target.sifatSurat.value = "";
+    event.target.tanggalSurat.value = "";
+    event.target.penerimaSurat.value = "";
+    event.target.lampiranSurat.value = "";
+    event.target.keteranganSurat.value = "";
 
     window.location.reload(true);
-
-  }
-  const [searchValue, setSearchValue] = useState('');
+  };
+  const [searchValue, setSearchValue] = useState("");
   const handleCariSuratMasuk = async (e) => {
     const value = e.target.value;
     setSearchValue(value);
     try {
       let { data: tb_suratMasuk, error } = await supabase
-        .from('tb_suratMasuk')
-        .select('*')
-        .ilike('no', `%${value}%`) 
+        .from("tb_suratMasuk")
+        .select("*")
+        .ilike("no", `%${value}%`)
         .limit(10);
 
       if (error) {
-     
         console.error(error);
       } else {
-        
         setDataSuratMasuk(tb_suratMasuk);
-      
       }
     } catch (error) {
       console.error(error);
     }
-
-  }
+  };
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5
-  const totalPages = 3 
+  const itemsPerPage = 5;
+  const totalPages = 3;
 
   const handlePageChange = async (newPage) => {
     setCurrentPage(newPage);
 
     const { data: tb_suratMasuk, error } = await supabase
-      .from('tb_suratMasuk')
-      .select('*')
+      .from("tb_suratMasuk")
+      .select("*")
       .range((newPage - 1) * itemsPerPage, newPage * itemsPerPage - 1);
     setDataSuratMasuk(tb_suratMasuk);
-
-   
-  }
-  
-
-
+  };
 
   return (
     <>
@@ -96,7 +84,7 @@ export default function SuratMasuk({ suratMasuk }) {
 
       <section>
         <div className="container py-4 py-xl-5">
-
+          {/* 
           <button
             type="button"
             className="btn btn-primary"
@@ -266,12 +254,12 @@ export default function SuratMasuk({ suratMasuk }) {
                 </div>
               </div>
             </form>
-          </div>
-
+          </div> */}
+          {/* 
           <div className="input-group mt-5">
             <span className="input-group-text" id="basic-addon1">Search</span>
             <input type="text" className="form-control " placeholder="cari" id='key' name='key' onChange={handleCariSuratMasuk} />
-          </div>
+          </div> */}
           <div className="table-responsive mt-4">
             <table
               id="table_id"
@@ -288,16 +276,14 @@ export default function SuratMasuk({ suratMasuk }) {
                   <th>Penerima</th>
                   <th>Lampiran</th>
                   <th>Keterangan</th>
-
                 </tr>
               </thead>
               <tbody className="table-group-divider">
-
-                {
+                {/* {
                   // Render hasil pencarian jika data tersedia
-                  dataSuratMasuk.map((d,index) => (
+                  dataSuratMasuk.map((d, index) => (
                     <tr key={d.id}>
-                      <td>{index+1}</td>
+                      <td>{index + 1}</td>
                       <td>{d.no}</td>
                       <td>{d.perihal}</td>
                       <td>{d.suratDari}</td>
@@ -306,46 +292,30 @@ export default function SuratMasuk({ suratMasuk }) {
                       <td>{d.penerima}</td>
                       <td>{d.lampiran}</td>
                       <td>{d.keterangan}</td>
-
                     </tr>
-                ))}
+                  ))
+                } */}
 
-
-
-
-
-
+                {
+                  // Render hasil pencarian jika data tersedia
+                  SuratMasuk.map((d, index) => (
+                    <tr key={d.no}>
+                      <td>{d.no}</td>
+                      <td>{d.no}</td>
+                      <td>{d.perihal}</td>
+                      <td>{d.dari}</td>
+                      <td>{d.sifat}</td>
+                      <td>{d.tanggal}</td>
+                      <td>{d.penerima}</td>
+                      <td>{d.lampiran}</td>
+                      <td>{d.keterangan}</td>
+                    </tr>
+                  ))
+                }
               </tbody>
             </table>
-            <nav aria-label="Page navigation example">
-              <ul className="pagination justify-content-end">
-                <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                  {/* Tombol "Previous" tidak dapat diklik ketika di halaman pertama */}
-                  <a className="btn page-link" onClick={() => handlePageChange(currentPage - 1)}>
-                    Previous
-                  </a>
-                </li>
-                {/* Loop untuk membuat item halaman */}
-                {Array.from({ length: totalPages }, (_, index) => (
-                  <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
-                    {/* Menggunakan index + 1 sebagai nomor halaman */}
-                    <a className="btn page-link" onClick={() => handlePageChange(index + 1)}>
-                      {index + 1}
-                    </a>
-                  </li>
-                ))}
-                <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-                  {/* Tombol "Next" tidak dapat diklik ketika di halaman terakhir */}
-                  <a className="btn page-link" onClick={() => handlePageChange(currentPage + 1)}>
-                    Next
-                  </a>
-                </li>
-              </ul>
-            </nav>
           </div>
         </div>
-
-
       </section>
     </>
   );
@@ -357,11 +327,34 @@ export async function getServerSideProps() {
     .from('tb_suratMasuk')
     .select('*')
     .range(0,5)
+
+
+
+      const result = await fetch(url);
+      const { sheets } = await result.json();
+      const eventSheet = sheets[0];
+      const data = eventSheet.data[0].rowData
+        .filter((_, index) => index !== 0) // Mulai dari index 1 (menghindari nama kolom)
+        .map((row) => {
+          const { values } = row;
+          return {
+            no: values[0].formattedValue || null,
+            kode: values[1].formattedValue || null,
+            perihal: values[2].formattedValue || null,
+            dari: values[3].formattedValue || null,
+            sifat: values[4].formattedValue || null,
+            tanggal: values[5].formattedValue || null,
+            penerima: values[6].formattedValue || null,
+            lampiran: values[7].formattedValue || null,
+            keterangan: values[8].formattedValue || null,
+          };
+        });
     
 
   return {
     props: {
-      suratMasuk: tb_suratMasuk
+      suratMasuk: tb_suratMasuk,
+      dataSurat: data,
     }, // will be passed to the page component as props
   };
 }
